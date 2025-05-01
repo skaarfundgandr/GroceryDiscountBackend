@@ -18,7 +18,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 })
                 .ToListAsync();
         }
-        public async Task AddProduct(Product prod) {
+        public async Task AddProductAsync(Product prod) {
             using var transaction = await _db.Database.BeginTransactionAsync();
             try {
                 await _db.Products.AddAsync(prod);
@@ -28,6 +28,43 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
             } catch {
                 await transaction.RollbackAsync();
                 throw new Exception("Addition of product failed! Rolling back changes...");
+            }
+        }
+        public async Task UpdateProductAsync(ProductDTO fromProduct, Product toProduct) {
+            using var transaction = await _db.Database.BeginTransactionAsync();
+
+            try {
+                long? prodId = await _db.Products
+                    .Where(p => p.ProductName == fromProduct.ProductName)
+                    .Select(p => (long?)p.ProductID)
+                    .FirstOrDefaultAsync();
+                if (prodId.HasValue) {
+                    var updatedProduct = toProduct;
+                    updatedProduct.ProductID = (long)prodId;
+                    _db.Update(updatedProduct);
+                    await _db.SaveChangesAsync();
+                    await transaction.CommitAsync();
+                }
+            } catch {
+                await transaction.RollbackAsync();
+                throw new Exception("Updating product failed! rolled back changes");
+            }
+        }
+        public async Task RemoveProductAsync(ProductDTO prod) {
+            using var transaction = await _db.Database.BeginTransactionAsync();
+
+            try {
+                var product = _db.Products
+                    .FirstOrDefaultAsync(p => p.ProductName == prod.ProductName);
+                if (product != null) {
+                    _db.Remove(product);
+                    await _db.SaveChangesAsync();
+                    await _db.Database.ExecuteSqlRawAsync("EXEC reseedAll");
+                    await transaction.CommitAsync();
+                }
+            } catch {
+                await transaction.RollbackAsync();
+                throw new Exception("Deletion of product failed! Rolled back changes.");
             }
         }
     }
