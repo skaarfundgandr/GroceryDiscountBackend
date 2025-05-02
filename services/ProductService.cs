@@ -62,6 +62,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 
                 if (product != null) {
                     _db.Remove(product);
+                    
                     await _db.SaveChangesAsync();
                     await _db.Database.ExecuteSqlRawAsync("EXEC reseedAll");
                     await transaction.CommitAsync();
