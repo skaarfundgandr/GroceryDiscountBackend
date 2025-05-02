@@ -44,6 +44,9 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                     _db.Update(updatedProduct);
                     await _db.SaveChangesAsync();
                     await transaction.CommitAsync();
+                } else {
+                    await transaction.RollbackAsync();
+                    throw new Exception("Product not found!");
                 }
             } catch {
                 await transaction.RollbackAsync();
@@ -54,13 +57,17 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
             using var transaction = await _db.Database.BeginTransactionAsync();
 
             try {
-                var product = _db.Products
+                var product = await _db.Products
                     .FirstOrDefaultAsync(p => p.ProductName == prod.ProductName);
+                
                 if (product != null) {
                     _db.Remove(product);
                     await _db.SaveChangesAsync();
                     await _db.Database.ExecuteSqlRawAsync("EXEC reseedAll");
                     await transaction.CommitAsync();
+                } else {
+                    await transaction.RollbackAsync();
+                    throw new Exception("Product not found!");
                 }
             } catch {
                 await transaction.RollbackAsync();
