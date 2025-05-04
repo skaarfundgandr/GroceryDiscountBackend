@@ -12,5 +12,8 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public required int Amount { get; set; }
         [Required]
         public required DateOnly Date { get; set; }
+
+        public List<Kiosk>? Kiosk { get; set; }
+        public List<Inventory>? Inventory { get; set; }
     }
 }

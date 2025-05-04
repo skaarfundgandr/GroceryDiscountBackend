@@ -7,15 +7,15 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int restockID { get; set; }
+        public int RestockID { get; set; }
         [Required]
         [ForeignKey("Inventory")]
-        public long inventoryID { get; set; }
+        public long InventoryID { get; set; }
         [Required]
-        public int amount { get; set; }
+        public int Amount { get; set; }
         [Required]
-        public required DateOnly date { get; set; }
-
+        public required DateOnly Date { get; set; }
+        // One restock could have many inventory items
         public required Inventory Inventory { get; set; }
     }
 }

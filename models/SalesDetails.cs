@@ -12,9 +12,9 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public long SalesID { get; set; }
         [ForeignKey("Kiosk")]
         public long KioskID { get; set; }
-
-        public Inventory? Inventory { get; set; }
-        public Sales? Sales { get; set; }
-        public Kiosk? Kiosk { get; set; }
+        // Many to many
+        public List<Inventory>? Inventory { get; set; }
+        public List<Sales>? Sales { get; set; }
+        public List<Kiosk>? Kiosk { get; set; }
     }
 }

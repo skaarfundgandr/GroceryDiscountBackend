@@ -18,5 +18,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public required String ProductCategory { get; set; }
         [Required]
         public decimal ProductPrice { get; set; }
+        public Inventory? Inventory { get; set; }
     }
 }

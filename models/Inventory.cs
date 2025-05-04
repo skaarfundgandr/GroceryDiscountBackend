@@ -15,7 +15,10 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         [Required]
         public int Quantity { get; set;}
         public DateOnly? LatestRestock { get; set; }
-        // Required to model relations
+        // One to one
         public required Product Product { get; set; }
+        public List<RestockHistory>? RestockHistory { get; set; }
+        public List<Sales>? Sales { get; set; }
+        public List<Kiosk>? Kiosk { get; set; }
     }
 }
