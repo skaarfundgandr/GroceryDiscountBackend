@@ -6,15 +6,15 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
     public class SalesDetails {
         [Key]
         public long ReferenceID { get; set; }
-        [ForeignKey("Inventory")]
         public long InventoryID { get; set; }
-        [ForeignKey("Sales")]
         public long SalesID { get; set; }
-        [ForeignKey("Kiosk")]
         public long KioskID { get; set; }
         // Many to many
+        [ForeignKey(nameof(InventoryID))]
         public List<Inventory>? Inventory { get; set; }
+        [ForeignKey(nameof(SalesID))]
         public List<Sales>? Sales { get; set; }
+        [ForeignKey(nameof(KioskID))]
         public List<Kiosk>? Kiosk { get; set; }
     }
 }

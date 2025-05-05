@@ -7,7 +7,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long InventoryID { get; set; }
-        [ForeignKey("Product")]
         [Required]
         public long ProductID { get; set; }
         [StringLength(50)]
@@ -16,9 +15,9 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public int Quantity { get; set;}
         public DateOnly? LatestRestock { get; set; }
         // One to one
+        [ForeignKey(nameof(ProductID))]
         public required Product Product { get; set; }
-        public List<RestockHistory>? RestockHistory { get; set; }
-        public List<Sales>? Sales { get; set; }
-        public List<Kiosk>? Kiosk { get; set; }
+        // Many to many using join table
+        public List<SalesDetails>? SalesDetails { get; set; }
     }
 }

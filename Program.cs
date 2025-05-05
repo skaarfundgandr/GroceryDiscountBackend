@@ -8,12 +8,6 @@ var service = new ProductService(db);
 
 Console.ReadKey();
 
-await service.AddProductAsync(new Product{
-    ProductName = "test",
-    ProductCategory = "testing1",
-    ProductPrice = 10.99m,
-});
-
 var results = await service.GetProductsAsync();
 
 foreach (var s in results) {

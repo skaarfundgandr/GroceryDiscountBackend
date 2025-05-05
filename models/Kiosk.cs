@@ -13,7 +13,5 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         [StringLength(50)]
         public required string Password { get; set; }
         public List<SalesDetails>? SalesDetails { get; set; }
-        public List<Sales>? Sales { get; set; }
-        public List<Inventory>? Inventory { get; set; }
     }
 }
