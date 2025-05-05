@@ -9,7 +9,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
 
         public InventoryService(AppsdevDBContext db) => _db = db;
 
-        public async Task<List<InventoryProductsViewDTO> GetInventoryProductsAsync() {
+        public async Task<List<InventoryProductsViewDTO>> GetInventoryProductsAsync() {
             return await _db.InventoryProducts
                 .Select(res => new InventoryProductsViewDTO {
                     ProductName = res.ProductName,
