@@ -10,12 +10,12 @@ namespace GROCERYDISCOUNTBACKEND.DATABASE {
         public DbSet<Product> Products { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Kiosk> Kiosks { get; set; }
-        public DbSet<RestockHistory> RestockHistories { get; set; }
+        public DbSet<RestockHistory> RestockHistory { get; set; }
         public DbSet<Sales> Sales { get; set; }
         public DbSet<SalesDetails> SalesDetails { get; set; }
         public DbSet<InventoryProductsView> InventoryProducts { get; set; }
         public DbSet<PurchaseHistoryView> PurchaseHistory { get; set; }
-        public DbSet<RestockHistoryView> RestockHistory { get; set; } 
+        public DbSet<RestockHistoryView> RestockHistoryView { get; set; } 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             ConfigureDatabase(optionsBuilder);
         }
