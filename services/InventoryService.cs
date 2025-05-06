@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 using GROCERYDISCOUNTBACKEND.DATABASE;
 using GROCERYDISCOUNTBACKEND.DTO;
+using System.Data.SqlClient;
 
 namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class InventoryService {
@@ -21,6 +22,12 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                     LastRestock = res.LastRestock
                 })
                 .ToListAsync();
+        }
+        public async Task AddProductToInventoryAsync(ProductDTO product) {
+            var productNameParam = new SqlParameter("@productName", product.ProductName);
+
+            await _db.Database
+                .ExecuteSqlRawAsync("EXEC addProductToInv @productName", productNameParam);
         }
     }
 }
