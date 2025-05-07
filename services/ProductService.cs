@@ -7,7 +7,7 @@ using GROCERYDISCOUNTBACKEND.MODELS;
 namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class ProductService {
         private readonly AppsdevDBContext _db;
-        public ProductService(AppsdevDBContext db) => _db = db;
+        public ProductService() => _db = AppsdevDBContext.Instance;
         public async Task<List<ProductDTO>> GetProductsAsync() {
             return await _db.Products
                 .Select(res => new ProductDTO {

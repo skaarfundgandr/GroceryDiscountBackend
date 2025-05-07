@@ -7,7 +7,7 @@ using GROCERYDISCOUNTBACKEND.DTO;
 namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class TransactionService {
         private readonly AppsdevDBContext _db;
-        public TransactionService(AppsdevDBContext db) => _db = db;
+        public TransactionService() => _db = AppsdevDBContext.Instance;
 
         public async Task<List<PurchaseHistoryViewDTO>> GetPurchaseHistory() {
             return await _db.PurchaseHistory

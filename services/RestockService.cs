@@ -9,7 +9,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class RestockService {
         private readonly AppsdevDBContext _db;
 
-        public RestockService(AppsdevDBContext db) => _db = db;
+        public RestockService() => _db = AppsdevDBContext.Instance;
 
         public async Task<List<RestockHistoryViewDTO>> GetRestockHistoryViewAsync() {
             return await _db.RestockHistoryView

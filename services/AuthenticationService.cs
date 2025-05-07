@@ -6,7 +6,7 @@ using GROCERYDISCOUNTBACKEND.DTO;
 namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class AuthenticationService {
         private readonly AppsdevDBContext _db;
-        public AuthenticationService(AppsdevDBContext db) => _db = db;
+        public AuthenticationService() => _db = AppsdevDBContext.Instance;
 
         public async Task<bool> Authenticate(String username, String password) {
             var user = await _db.Kiosks

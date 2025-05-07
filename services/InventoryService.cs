@@ -8,7 +8,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class InventoryService {
         private readonly AppsdevDBContext _db;
 
-        public InventoryService(AppsdevDBContext db) => _db = db;
+        public InventoryService() => _db = AppsdevDBContext.Instance;
 
         public async Task<List<InventoryProductsViewDTO>> GetInventoryProductsAsync() {
             return await _db.InventoryProducts
