@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 using GROCERYDISCOUNTBACKEND.DATABASE;
 using GROCERYDISCOUNTBACKEND.DTO;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace GROCERYDISCOUNTBACKEND.SERVICES {
     public class InventoryService {

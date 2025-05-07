@@ -22,7 +22,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
             using var transaction = await _db.Database.BeginTransactionAsync();
             
             try {
-                Product prod = new Product {
+                ProductModel prod = new ProductModel {
                     ProductName = product.ProductName,
                     ProductCategory = product.ProductCategory,
                     ProductDesc = product.ProductDesc,
@@ -30,15 +30,15 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 };
                 await _db.Products.AddAsync(prod);
                 await _db.SaveChangesAsync();
+                await new InventoryService().AddProductToInventoryAsync(product);
 
                 await transaction.CommitAsync();
-                await new InventoryService().AddProductToInventoryAsync(product);
             } catch {
                 await transaction.RollbackAsync();
                 throw new Exception("Addition of product failed! Rolling back changes...");
             }
         }
-        public async Task UpdateProductAsync(ProductDTO fromProduct, Product toProduct) {
+        public async Task UpdateProductAsync(ProductDTO fromProduct, ProductModel toProduct) {
             using var transaction = await _db.Database.BeginTransactionAsync();
 
             try {
