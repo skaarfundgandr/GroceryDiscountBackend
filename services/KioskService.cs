@@ -15,7 +15,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 })
                 .ToListAsync();
         }
-        public async Task RegisterKioskAsync(Kiosk kiosk) {
+        public async Task RegisterKioskAsync(KioskModel kiosk) {
             using var transaction = await _db.Database.BeginTransactionAsync();
             
             try {
@@ -28,7 +28,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 throw new Exception("Failed registering kiosk! Rolled back changes");
             }
         }
-        public async Task UpdateKioskAsync(KioskDTO source, Kiosk updated) {
+        public async Task UpdateKioskAsync(KioskDTO source, KioskModel updated) {
             using var transaction = await _db.Database.BeginTransactionAsync();
 
             try {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("products")]
-    public class Product {
+    public class ProductModel {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ProductID { get; set; }
@@ -17,6 +17,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public required String ProductCategory { get; set; }
         [Required]
         public decimal ProductPrice { get; set; }
-        public Inventory? Inventory { get; set; }
+        public InventoryModel? Inventory { get; set; }
     }
 }

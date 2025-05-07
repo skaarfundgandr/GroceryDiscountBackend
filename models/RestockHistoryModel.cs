@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("restockHistory")]
-    public class RestockHistory
-    {
+    public class RestockHistoryModel {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RestockID { get; set; }
@@ -16,6 +15,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public required DateOnly Date { get; set; }
         // One restock could have many inventory items
         [ForeignKey(nameof(InventoryID))]
-        public required Inventory Inventory { get; set; }
+        public required InventoryModel Inventory { get; set; }
     }
 }

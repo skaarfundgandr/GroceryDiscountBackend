@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("kiosks")]
-    public class Kiosk {
+    public class KioskModel {
         [Key]
         public long KioskID { get; set; }
         [Required]
@@ -12,6 +12,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         [Required]
         [StringLength(50)]
         public required string Password { get; set; }
-        public List<SalesDetails>? SalesDetails { get; set; }
+        public List<SalesDetailsModel>? SalesDetails { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("inventory")]
-    public class Inventory {
+    public class InventoryModel {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long InventoryID { get; set; }
@@ -16,8 +16,8 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public DateOnly? LatestRestock { get; set; }
         // One to one
         [ForeignKey(nameof(ProductID))]
-        public required Product Product { get; set; }
+        public required ProductModel Product { get; set; }
         // Many to many using join table
-        public List<SalesDetails>? SalesDetails { get; set; }
+        public List<SalesDetailsModel>? SalesDetails { get; set; }
     }
 }

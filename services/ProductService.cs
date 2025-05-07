@@ -32,6 +32,7 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 await _db.SaveChangesAsync();
 
                 await transaction.CommitAsync();
+                await new InventoryService().AddProductToInventoryAsync(product);
             } catch {
                 await transaction.RollbackAsync();
                 throw new Exception("Addition of product failed! Rolling back changes...");

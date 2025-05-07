@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("salesDetails")]
-    public class SalesDetails {
+    public class SalesDetailsModel {
         [Key]
         public long ReferenceID { get; set; }
         public long InventoryID { get; set; }
@@ -11,10 +11,10 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         public long KioskID { get; set; }
         // Many to many
         [ForeignKey(nameof(InventoryID))]
-        public List<Inventory>? Inventory { get; set; }
+        public List<InventoryModel>? Inventory { get; set; }
         [ForeignKey(nameof(SalesID))]
-        public List<Sales>? Sales { get; set; }
+        public List<SalesModel>? Sales { get; set; }
         [ForeignKey(nameof(KioskID))]
-        public List<Kiosk>? Kiosk { get; set; }
+        public List<KioskModel>? Kiosk { get; set; }
     }
 }

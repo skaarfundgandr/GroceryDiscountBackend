@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GROCERYDISCOUNTBACKEND.MODELS {
     [Table("sales")]
-    public class Sales {
+    public class SalesModel {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long SalesID { get; set; }
@@ -13,6 +13,6 @@ namespace GROCERYDISCOUNTBACKEND.MODELS {
         [Required]
         public required DateOnly Date { get; set; }
 
-        public List<SalesDetails>? SalesDetails { get; set; }
+        public List<SalesDetailsModel>? SalesDetails { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GROCERYDISCOUNTBACKEND.MODELS.VIEWS {
     [Keyless]
     [Table("view_purchaseHistory")]
-    public class PurchaseHistoryView {
+    public class PurchaseHistoryViewModel {
         public long Kiosk { get; set; }
         [Column("Product Name")]
         public required String ProductName { get; set; }

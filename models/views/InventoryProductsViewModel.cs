@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GROCERYDISCOUNTBACKEND.MODELS.VIEWS {
     [Keyless]
     [Table("view_invProducts")]
-    public class InventoryProductsView {
+    public class InventoryProductsViewModel {
         [Column("Inventory ID")]
         public long InventoryID { get; set; }
         [Column("Product Name")]
