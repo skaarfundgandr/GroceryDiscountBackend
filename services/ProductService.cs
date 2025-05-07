@@ -18,9 +18,9 @@ namespace GROCERYDISCOUNTBACKEND.SERVICES {
                 })
                 .ToListAsync();
         }
-        // TODO: Change argument to productDTO
         public async Task AddProductAsync(ProductDTO product) {
             using var transaction = await _db.Database.BeginTransactionAsync();
+            
             try {
                 Product prod = new Product {
                     ProductName = product.ProductName,

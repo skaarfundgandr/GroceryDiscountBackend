@@ -2,7 +2,7 @@
 using GROCERYDISCOUNTBACKEND.DATABASE;
 using GROCERYDISCOUNTBACKEND.SERVICES;
 
-await using var db = new AppsdevDBContext();
+await using var db = AppsdevDBContext.Instance;
 var service = new ProductService(db);
 
 Console.ReadKey();
